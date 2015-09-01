@@ -1,10 +1,9 @@
-require 'active_support/ordered_options'
 require 'active_support/core_ext/hash/deep_merge'
 require 'yaml'
 require 'erb'
 
 module AppKonfig
-  class Config < ActiveSupport::OrderedOptions
+  class Config < Hash
     DEFAULT_ENV = 'development'
     CONFIG_PATH = {
       public: './config/config.yml',
@@ -13,7 +12,12 @@ module AppKonfig
 
     def initialize
       super
-      deep_merge!(pub_config).deep_merge!(sec_config)
+      deep_merge!(pub_config).deep_merge!(sec_config).deep_symbolize_keys!
+    end
+
+    def method_missing(key)
+      return self[key] unless self[key].is_a?(Hash)
+      ::AppKonfig::Config[self[key]]
     end
 
     private
