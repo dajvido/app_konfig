@@ -12,10 +12,11 @@ module AppKonfig
 
     def initialize
       super
-      deep_merge!(pub_config).deep_merge!(sec_config).deep_symbolize_keys!
+      deep_merge!(pub_config).deep_merge!(sec_config)
     end
 
     def method_missing(key)
+      key = key.to_s
       return self[key] unless self[key].is_a?(Hash)
       ::AppKonfig::Config[self[key]]
     end

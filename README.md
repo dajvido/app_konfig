@@ -1,6 +1,6 @@
 # AppKonfig
 
-Lightweight app configuration for Rails
+Lightweight app configuration for Rails >= 3.0
 
 ## Installation
 
