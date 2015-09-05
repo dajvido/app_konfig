@@ -6,8 +6,8 @@ require 'app_konfig/version'
 Gem::Specification.new do |spec|
   spec.name          = "app_konfig"
   spec.version       = AppKonfig::VERSION
-  spec.authors       = ["Bartosz Kopiński"]
-  spec.email         = ["bartosz@kopinski.pl"]
+  spec.authors       = ["Bartosz Kopiński", "Radosław Piątek"]
+  spec.email         = ["bartosz@kopinski.pl", "radek.nekath@gmail.com"]
   spec.summary       = "Lightweight app configuration for Rails"
   spec.homepage      = "https://github.com/netguru/app_konfig"
   spec.license       = "MIT"

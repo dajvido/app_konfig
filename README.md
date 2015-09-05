@@ -21,14 +21,23 @@ In `config/config.yml`:
 ```yaml
 development:
   value: 1
+  proxy:
+    ip: 127.0.0.1
+    port: 8080
   secret_key: DEV_TOKEN
 
 test:
   value: 2
+  proxy:
+    ip: 127.0.0.1
+    port: 8080
   secret_key: TEST_TOKEN
 
 production:
   value: 3
+  proxy:
+    ip: 10.0.0.10
+    port: 8080
 ```
 
 In `config/secrets.yml`: (optional, not included in version control)
@@ -40,6 +49,7 @@ production:
 Anywhere in the app:
 ```ruby
 AppConfig.value
+AppConfig.proxy.ip
 AppConfig.secret_key
 ```
 
