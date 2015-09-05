@@ -1,0 +1,15 @@
+development:
+  proxy:
+    port: 3000
+  hostname: example.com
+  secret_key: <%= ENV["SECRET_KEY"] %>
+  array_key:
+    - first
+    - second
+    - third
+
+test:
+  hostname: test.example.com
+
+production:
+  hostname: ''
