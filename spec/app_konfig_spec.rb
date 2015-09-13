@@ -26,6 +26,10 @@ RSpec.describe AppKonfig::Config do
     expect(subject.array_key).to eq(['first_new', 'second_new', 'third_new'])
   end
 
+  it 'allows to use a key named "key" in configuration' do
+    expect(subject.some_api.key).to eq('secret')
+  end
+
   it 'allows to embed ruby inside a config file' do
     allow(ENV).to receive(:[]).with('SECRET_KEY').and_return('value_from_env')
     expect(subject.secret_key).to eq('value_from_env')

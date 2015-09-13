@@ -9,6 +9,7 @@ module AppKonfig
       public: './config/config.yml',
       secret: './config/secrets.yml',
     }
+    undef_method :key
 
     def initialize
       super

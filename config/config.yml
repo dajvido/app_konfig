@@ -1,6 +1,8 @@
 development:
   proxy:
     port: 3000
+  some_api:
+    key: secret
   hostname: example.com
   secret_key: <%= ENV["SECRET_KEY"] %>
   array_key:
