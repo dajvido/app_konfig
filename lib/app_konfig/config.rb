@@ -15,6 +15,11 @@ module AppKonfig
       deep_merge!(pub_config).deep_merge!(sec_config)
     end
 
+    def self.get(args)
+      self.new
+      args.split('.').inject(self) { |hash, arg| hash.fetch(arg) }
+    end
+
     def method_missing(key)
       key = key.to_s
       return self[key] unless self[key].is_a?(Hash)
