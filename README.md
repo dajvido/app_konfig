@@ -52,6 +52,12 @@ AppConfig.value
 AppConfig.proxy.ip
 AppConfig.secret_key
 ```
+or
+```ruby
+AppConfig.get('value')
+AppConfig.get('proxy.ip')
+AppConfig.get('secret_key')
+```
 
 ## Contributing
 
