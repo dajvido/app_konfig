@@ -15,12 +15,11 @@ module AppKonfig
     def initialize
       super
       deep_merge!(pub_config).deep_merge!(sec_config)
-      self
     end
 
     def get(args)
         args.split('.').inject(self) { |hash, arg| hash.fetch(arg) }
-      rescue
+      rescue KeyError
         raise AppKonfig::ConfigurationKeyNotFound.new("configuration key not found")
     end
 
