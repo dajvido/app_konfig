@@ -3,6 +3,8 @@ require 'yaml'
 require 'erb'
 
 module AppKonfig
+  class ConfigurationKeyNotFound < Exception ; end
+
   class Config < Hash
     DEFAULT_ENV = 'development'
     CONFIG_PATH = {
@@ -13,6 +15,12 @@ module AppKonfig
     def initialize
       super
       deep_merge!(pub_config).deep_merge!(sec_config)
+    end
+
+    def get(args)
+        args.split('.').inject(self) { |hash, arg| hash.fetch(arg) }
+      rescue KeyError
+        raise AppKonfig::ConfigurationKeyNotFound.new("configuration key not found")
     end
 
     def method_missing(key)
