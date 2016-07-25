@@ -32,7 +32,7 @@ module AppKonfig
     private
 
     def pub_config
-      load_config(CONFIG_PATH[:public])
+      load_config(CONFIG_PATH[:public]) rescue {}
     end
 
     def sec_config
