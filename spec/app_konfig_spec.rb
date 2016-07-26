@@ -78,6 +78,15 @@ RSpec.describe AppKonfig::Config do
     end
   end
 
+  context 'when config file is not found' do
+    it 'fails silently' do
+      stub_const('AppKonfig::Config::CONFIG_PATH', {
+        public: '',
+        secret: './config/secrets.yml',
+      })
+      expect{ subject }.not_to raise_error
+    end
+  end
 
   context 'when secrets file is not found' do
     it 'fails silently' do
